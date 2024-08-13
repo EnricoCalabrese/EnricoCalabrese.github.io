@@ -1,15 +1,15 @@
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=2">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             /* Css */
             :root {
                 --mainColor: #4d6b73;
                 --underImageColor: #2e4457;
-                --backGroundColor: #f5f5f5;
+                --backGroundColor: #cedade;
                 --colorTabHeight: 65vh;
                 --marginLeftText: 8vw;
-                --marginTopText: calc(var(--colorTabHeight) /4);
+                --marginTopText: calc(4vh + 6vw);
             }
             body {
                 background-color: var(--backGroundColor);
@@ -20,6 +20,7 @@
             .color-tab {
                 margin: -8;
                 height: var(--colorTabHeight);
+                max-height: 57vw;
                 background-color: var(--mainColor);
                 overflow: hidden;
                 position: relative;
@@ -40,18 +41,19 @@
             }
             .under-img {
                 height: 50vh;
-                width: 23vw;
+                width: calc(19vw + 8vh);
                 display: inline-block;
                 position: absolute;
-                margin-left: -2vw;
+                margin-left: -3vw;
                 margin-top: -2vw;
                 background-color: var(--underImageColor);
                 border-radius: 5px 5px 0 0;
             }
             .img-me {
                 margin-top: -10vw;
+                margin-left: -1.5vh;
                 position: relative;
-                max-width: 20vw;
+                max-width: calc(10vh + 15vw);
                 height: auto;
             }
         </style> 
