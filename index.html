@@ -14,6 +14,7 @@
                 --marginTopText: calc(4vh + 6vw);
                 --fontStyle: "Courier New", Courier, monospace;
                 --widthText: calc(35vw + 2vh);
+                --sizeTopElements: calc(1.1vw + 1.2vh);
                 --linkedinColor: #0077B5;
                 --gmailColor: #C22D21;
                 --grayColor: #363636;
@@ -36,7 +37,7 @@
                 margin-left: var(--marginLeftText);
                 content: "Enrico Calabrese";
                 font-family: var(--fontStyle);
-                font-size: calc(0.5vw + 0.8vh);
+                font-size: calc(0.4vw + 1vh);
                 letter-spacing: 2px;
             }
             .top-btn {
@@ -44,7 +45,7 @@
             }
             #linkedin, #gmail {
                 margin-right: 1vw;
-                font-size: 32px;
+                font-size: var(--sizeTopElements);
                 color: var(--grayColor);
                 cursor: pointer;
             }
@@ -62,7 +63,7 @@
                 margin-bottom: calc(var(--marginTopText) /4);
                 padding-top: var(--marginTopText);
                 content: var(--titleEn);
-                font-size: calc(1.1vw + 1.2vh);
+                font-size: var(--sizeTopElements);
                 letter-spacing: 2px;
                 font-weight: bold;
                 font-family: var(--fontStyle);
