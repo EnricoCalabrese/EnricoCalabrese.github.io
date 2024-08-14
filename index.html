@@ -49,9 +49,21 @@
                 font-size: var(--sizeTopElements);              
                 color: var(--grayColor);
                 cursor: pointer;
+                
+                -webkit-transition: color 1s;
+                -moz-transition:    color 1s;
+                -ms-transition:     color 1s;
+                -o-transition:      color 1s;
+                transition:         color 1s;
             }
             #gmail {
                 font-size: calc(var(--sizeTopElements) *1.04);
+            }
+            #linkedin:hover {
+                color: var(--linkedinColor);
+            }
+            #gmail:hover {
+                color: var(--gmailColor);
             }
             .color-tab {
                 margin: -8;
@@ -90,7 +102,7 @@
                 bottom: 0;
                 margin-left: -3vw;
                 background-color: var(--underImageColor);
-                border-radius: 5px 5px 0 0;
+                border-radius: 4px 4px 0 0;
             }
             .img-me {
                 margin-left: -1.5vh;
@@ -105,9 +117,8 @@
         <!-- HTML -->
         <div class="top-tab">
             <span class="title-name"></span>
-            <!-- https://www.w3schools.com/icons/fontawesome_icons_brand.asp  https://codepen.io/OfigenusMaximus/pen/yLKOpqb -->
             <div class="top-btn">
-                <i class="fa fa-linkedin-square" id="linkedin"></i>
+                <i class="fa fa-linkedin-square" id="linkedin" onclick="window.open('https:\/\/www.linkedin.com/in/luca-volini-401658106/?locale=en_US')"></i>
                 <i class="fa fa-envelope" id="gmail"></i>
             </div>
             
