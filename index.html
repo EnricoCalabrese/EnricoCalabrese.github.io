@@ -13,6 +13,7 @@
                 --marginLeftText: 8vw;
                 --marginTopText: calc(4vh + 6vw);
                 --fontStyle: "Courier New", Courier, monospace;
+                --widthText: calc(35vw + 2vh);
                 --linkedinColor: #0077B5;
                 --gmailColor: #C22D21;
                 --grayColor: #363636;
@@ -61,20 +62,20 @@
                 margin-bottom: calc(var(--marginTopText) /4);
                 padding-top: var(--marginTopText);
                 content: var(--titleEn);
-                font-size: calc(1.2vw + 1vh);
+                font-size: calc(1.1vw + 1.2vh);
                 letter-spacing: 2px;
                 font-weight: bold;
                 font-family: var(--fontStyle);
             }
             .intro::before {
                 margin-left: var(--marginLeftText);
-                width: 35vw;
-                margin-right: calc(30vw - 5vh);
+                width: var(--widthText);
+                margin-right: calc(var(--widthText) - 12vh);
                 display: inline-block;
                 vertical-align: top;
                 content: var(--descEn);
                 text-align: justify;
-                font-size: calc(0.7vw + 0.5vh);
+                font-size: calc(0.7vw + 0.6vh);
             }
             .under-img {
                 height: calc(14vh + 20vw);
