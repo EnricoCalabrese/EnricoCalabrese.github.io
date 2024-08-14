@@ -7,15 +7,32 @@
                 --mainColor: #4d6b73;
                 --underImageColor: #2e4457;
                 --backGroundColor: #cedade;
+                --topTabHeight: 5vh;
                 --colorTabHeight: 65vh;
                 --marginLeftText: 8vw;
                 --marginTopText: calc(4vh + 6vw);
+                --fontStyle: "Courier New", Courier, monospace;
+
+                --titleEn: "< WHO I AM >";
+                --descEn: "Here you can find activities to practise your reading skills.Reading will help you to improve your understanding of the language and build your vocabulary.The self-study lessons in this section are written and organised by English level based on the Common European Framework of Reference for languages (CEFR). There are different types of texts and interactive exercises that practise the reading skills you need to do well in your studies, to get ahead at work and to communicate in English in your free time.";
             }
             body {
                 background-color: var(--backGroundColor);
             }
             .top-tab {
-                height: 6vh;
+                height: var(--topTabHeight);
+                position: relative;
+                align-items: center;
+                display: flex;
+                margin: -8;
+                margin-bottom: 8;
+            }
+            .title-name::before {
+                margin-left: var(--marginLeftText);
+                content: "Enrico Calabrese";
+                font-family: var(--fontStyle);
+                font-size: 20px;
+                letter-spacing: 2px;
             }
             .color-tab {
                 margin: -8;
@@ -25,19 +42,25 @@
                 overflow: hidden;
                 position: relative;
             }
-            .title::before {
+            .title-intro::before {
                 display: block;
                 margin-left: var(--marginLeftText);
                 margin-bottom: calc(var(--marginTopText) /4);
                 padding-top: var(--marginTopText);
-                content: "Who I AM";
+                content: var(--titleEn);
+                font-size: 30px;
+                letter-spacing: 2px;
+                font-weight: bold;
+                font-family: var(--fontStyle);
             }
             .intro::before {
                 margin-left: var(--marginLeftText);
-                width: 55vw;
+                width: 35vw;
+                margin-right: calc(30vw - 5vh);
                 display: inline-block;
                 vertical-align: top;
-                content: "PROVA 1 2 3 4";
+                content: var(--descEn);
+                text-align: justify;
             }
             .under-img {
                 height: calc(14vh + 20vw);
@@ -61,10 +84,10 @@
     <body>
         <!-- HTML -->
         <div class="top-tab">
-
+            <span class="title-name"></span>
         </div>
         <div class="color-tab">
-            <span class="title"></span>
+            <span class="title-intro"></span>
             <span class="intro"></span>
             <div class="under-img"></div>
             <img class="img-me" src="img/me.png">
