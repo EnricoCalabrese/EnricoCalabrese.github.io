@@ -1,17 +1,21 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             /* Css */
             :root {
                 --mainColor: #4d6b73;
                 --underImageColor: #2e4457;
-                --backGroundColor: #cedade;
+                --backGroundColor: #e3e9eb;
                 --topTabHeight: 5vh;
                 --colorTabHeight: 65vh;
                 --marginLeftText: 8vw;
                 --marginTopText: calc(4vh + 6vw);
                 --fontStyle: "Courier New", Courier, monospace;
+                --linkedinColor: #0077B5;
+                --gmailColor: #C22D21;
+                --grayColor: #363636;
 
                 --titleEn: "< WHO I AM >";
                 --descEn: "Here you can find activities to practise your reading skills.Reading will help you to improve your understanding of the language and build your vocabulary.The self-study lessons in this section are written and organised by English level based on the Common European Framework of Reference for languages (CEFR). There are different types of texts and interactive exercises that practise the reading skills you need to do well in your studies, to get ahead at work and to communicate in English in your free time.";
@@ -33,6 +37,15 @@
                 font-family: var(--fontStyle);
                 font-size: 20px;
                 letter-spacing: 2px;
+            }
+            .top-btn {
+                margin-left: calc(75vw - 15vh);
+            }
+            #linkedin, #gmail {
+                margin-right: 1vw;
+                font-size: 32px;
+                color: var(--grayColor);
+                cursor: pointer;
             }
             .color-tab {
                 margin: -8;
@@ -85,6 +98,12 @@
         <!-- HTML -->
         <div class="top-tab">
             <span class="title-name"></span>
+            <!-- https://www.w3schools.com/icons/fontawesome_icons_brand.asp  https://codepen.io/OfigenusMaximus/pen/yLKOpqb -->
+            <div class="top-btn">
+                <i class="fa fa-linkedin-square" id="linkedin"></i>
+                <i class="fa fa-envelope" id="gmail"></i>
+            </div>
+            
         </div>
         <div class="color-tab">
             <span class="title-intro"></span>
