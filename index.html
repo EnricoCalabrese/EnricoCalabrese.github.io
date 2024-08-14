@@ -119,10 +119,15 @@
             <span class="title-name"></span>
             <div class="top-btn">
                 <i class="fa fa-linkedin-square" id="linkedin" onclick="window.open('https:\/\/www.linkedin.com/in/luca-volini-401658106/?locale=en_US')"></i>
-                <i class="fa fa-envelope" id="gmail"></i>
+                <i class="fa fa-envelope" id="gmail" onclick="copyGmailAddress()"></i>
             </div>
-            
         </div>
+
+        <dialog>
+            <button autofocus>Close</button>
+            <p>This modal dialog has a groovy backdrop!</p>
+        </dialog>
+
         <div class="color-tab">
             <span class="title-intro"></span>
             <span class="intro"></span>
@@ -133,7 +138,16 @@
          
         <script>
             // Js
+            dialogmail = document.querySelector("dialog");
+            document.querySelector("dialog button").addEventListener("click", () => {
+                dialogmail.close();
+            });
             
+            function copyGmailAddress(){
+                dialogmail.showModal();
+               // navigator.clipboard.writeText("enricocalabrese21@gmail.com");
+               //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+            }
         </script>        
     </body>
 </html>
