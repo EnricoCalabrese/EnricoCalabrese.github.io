@@ -21,6 +21,7 @@
 
                 --titleEn: "< WHO I AM >";
                 --descEn: "Here you can find activities to practise your reading skills.Reading will help you to improve your understanding of the language and build your vocabulary.The self-study lessons in this section are written and organised by English level based on the Common European Framework of Reference for languages (CEFR). There are different types of texts and interactive exercises that practise the reading skills you need to do well in your studies, to get ahead at work and to communicate in English in your free time.";
+                --dialogTitleEn: "Take in contacts";
             }
             body {
                 background-color: var(--backGroundColor);
@@ -111,6 +112,22 @@
                 max-width: calc(10vh + 15vw);
                 height: auto;
             }
+            dialog {
+                border-style: double;
+                background: var(--backGroundColor);
+            }
+            .dialog-title::before {
+                font-family: var(--fontStyle);
+                content: var(--dialogTitleEn);
+            }
+            .dialog-gmail::before {
+                content: "enricocalabrese21@gmail.com";
+            }
+            #copy {
+                margin-left: 5px;
+                font-size: 18px;
+                cursor: pointer;
+            }
         </style> 
     </head>
     <body>
@@ -119,13 +136,14 @@
             <span class="title-name"></span>
             <div class="top-btn">
                 <i class="fa fa-linkedin-square" id="linkedin" onclick="window.open('https:\/\/www.linkedin.com/in/luca-volini-401658106/?locale=en_US')"></i>
-                <i class="fa fa-envelope" id="gmail" onclick="copyGmailAddress()"></i>
+                <i class="fa fa-envelope" id="gmail" onclick="openDialogGmail()"></i>
             </div>
         </div>
 
         <dialog>
-            <button autofocus>Close</button>
-            <p>This modal dialog has a groovy backdrop!</p>
+            <span class="dialog-title"></span>
+            <br><br><span class="dialog-gmail"><i class="fa fa-copy" id="copy"></i>
+            <br><br><button>Close</button>
         </dialog>
 
         <div class="color-tab">
@@ -139,15 +157,16 @@
         <script>
             // Js
             dialogmail = document.querySelector("dialog");
-            document.querySelector("dialog button").addEventListener("click", () => {
+            dialogmail_btn = document.querySelector("dialog button");
+            dialogmail_btn.addEventListener("click", () => {
                 dialogmail.close();
             });
-            
-            function copyGmailAddress(){
+            function openDialogGmail(){
                 dialogmail.showModal();
-               // navigator.clipboard.writeText("enricocalabrese21@gmail.com");
-               //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
             }
+            document.getElementById("copy").addEventListener("click", () => {
+                navigator.clipboard.writeText("enricocalabrese21@gmail.com");
+            });
         </script>        
     </body>
 </html>
