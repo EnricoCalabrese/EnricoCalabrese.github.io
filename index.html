@@ -11,7 +11,7 @@
                 --topTabHeight: 5vh;
                 --colorTabHeight: 65vh;
                 --marginLeftText: 8vw;
-                --marginTopText: calc(4vh + 6vw);
+                --marginTopText: calc(1vh + 7.8vw);
                 --fontStyle: "Courier New", Courier, monospace;
                 --widthText: calc(35vw + 2vh);
                 --sizeTopElements: calc(0.6vw + 1.8vh);
@@ -22,7 +22,6 @@
                 --heightCard: calc(5.8vw + 10vh);
 
                 --titleEn: "< WHO I AM >";
-                --descEn: "Here you can find activities to practise your reading skills.Reading will help you to improve your understanding of the language and build your vocabulary.The self-study lessons in this section are written and organised by English level based on the Common European Framework of Reference for languages (CEFR). There are different types of texts and interactive exercises that practise the reading skills you need to do well in your studies, to get ahead at work and to communicate in English in your free time.";
                 --dialogTitleEn: "Take in contacts";
             }
             body {
@@ -84,20 +83,22 @@
                 margin-bottom: calc(var(--marginTopText) /4);
                 padding-top: var(--marginTopText);
                 content: var(--titleEn);
-                font-size: var(--sizeTopElements);
+                font-size: calc(0.75vw + 1.6vh);
                 letter-spacing: 0.1vw;
                 font-weight: bold;
                 font-family: var(--fontStyle);
             }
-            .intro::before {
+            .intro {
+                text-align: justify;
+                font-family: "Moderustic", sans-serif;
                 margin-left: var(--marginLeftText);
                 width: var(--widthText);
                 margin-right: calc(var(--widthText) - 12vh);
                 display: inline-block;
                 vertical-align: top;
-                content: var(--descEn);
-                text-align: justify;
-                font-size: calc(0.7vw + 0.6vh);
+                font-size: calc(0.6vw + 0.7vh);
+                line-height: 1.4;
+                white-space: pre-wrap;
             }
             .under-img {
                 height: calc(14vh + 20vw);
@@ -217,7 +218,7 @@
                 background: #9b4f97;
             }
             .color-angle.batch, .sp-item.batch:hover {
-                background: #449620;
+                background: #3c881c;
             }
             .sp-name {
                 font-family: "Moderustic", sans-serif;
@@ -250,7 +251,10 @@
 
         <div class="color-tab">
             <span class="title-intro"></span>
-            <span class="intro"></span>
+            <span class="intro" id="intro">Hi i'm a YYY yo guy and i work as a software developer and i have more than XXX+ years of experience as Data Scientist in the CRM's field.
+I am a guy who's always curious and happy to learn new things. 
+I love IT and i enjoy to apply it on as many fields as possible: mechanics/robotic, biology, videogames and especially to automate processes that otherwise would be a waste of time, the three key words for what makes a good program are: safety, efficiency and accessibility. 
+            </span>
             <div class="under-img"></div>
             <img class="img-me" src="img/me.png">
         </div>
@@ -284,14 +288,18 @@
 
         <script>
             // Js
-            dialogmail = document.querySelector("dialog");
-            dialogmail_btn = document.querySelector("dialog button");
+            let ysw = "2021/09/27/";
+            let yb = "2001/04/21";
+            let intro = document.getElementById("intro");
+            var yexp = new Date(new Date() - new Date(ysw)).getFullYear() - 1970;
+            var age = new Date(new Date() - new Date(yb)).getFullYear() - 1970;
+            intro.textContent = intro.textContent.replace("XXX", yexp).replace("YYY", age);
+
+            let dialogmail = document.querySelector("dialog");
+            let dialogmail_btn = document.querySelector("dialog button");
             dialogmail_btn.addEventListener("click", () => {
                 dialogmail.close();
             });
-            function openDialogGmail(){
-                dialogmail.showModal();
-            }
             document.getElementById("copy").addEventListener("click", () => {
                 navigator.clipboard.writeText("enricocalabrese21@gmail.com");
                 let copied = document.getElementById("copied");
@@ -300,6 +308,11 @@
                     copied.classList.toggle('fade');
                 }, 900);
             });
+
+            //functions
+            function openDialogGmail(){
+                dialogmail.showModal();
+            }
         </script>        
     </body>
 </html>
