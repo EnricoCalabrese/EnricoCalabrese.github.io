@@ -125,8 +125,7 @@
                 font-family: var(--fontStyle);
                 content: var(--dialogTitleEn);
             }
-            .dialog-gmail::before {
-                content: "enricocalabrese21@gmail.com";
+            .dialog-gmail {
                 position: relative;
                 top: -2px;
             }
@@ -245,10 +244,11 @@
         <dialog>
             <span class="dialog-title"></span>
             <br><br>
-            </span><span class="dialog-gmail">&nbsp;<i class="fa fa-copy" id="copy"><span class="copied" id="copied">Copied!</span></i>
+            <span class="dialog-gmail">
+                <a id="gmail-value" href="mailto:enricocalabrese21@gmail.com">enricocalabrese21@gmail.com</a>
+            </span>&nbsp;<i class="fa fa-copy" id="copy"><span class="copied" id="copied">Copied!</span></i>
             <br><br><button class="closeBtn">Close</button>
         </dialog>
-
         <div class="color-tab">
             <span class="title-intro"></span>
             <span class="intro" id="intro">Hi i'm a YYY yo guy and i work as a software developer and i have more than XXX+ years of experience as Data Scientist in the CRM's field.
@@ -301,7 +301,7 @@ I love IT and i enjoy to apply it on as many fields as possible: mechanics/robot
                 dialogmail.close();
             });
             document.getElementById("copy").addEventListener("click", () => {
-                navigator.clipboard.writeText("enricocalabrese21@gmail.com");
+                navigator.clipboard.writeText(document.getElementById("gmail-value").textContent);
                 let copied = document.getElementById("copied");
                 copied.classList.toggle('fade');
                 setTimeout(function() {
