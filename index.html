@@ -18,8 +18,8 @@
                 --linkedinColor: #0077B5;
                 --gmailColor: #C22D21;
                 --grayColor: #363636;
-                --withCard: 20vh;
-                --heightCard: 11vw;
+                --withCard: calc(21vh - 1vw);
+                --heightCard: calc(5.8vw + 10vh);
 
                 --titleEn: "< WHO I AM >";
                 --descEn: "Here you can find activities to practise your reading skills.Reading will help you to improve your understanding of the language and build your vocabulary.The self-study lessons in this section are written and organised by English level based on the Common European Framework of Reference for languages (CEFR). There are different types of texts and interactive exercises that practise the reading skills you need to do well in your studies, to get ahead at work and to communicate in English in your free time.";
@@ -75,6 +75,8 @@
                 background-color: var(--mainColor);
                 overflow: hidden;
                 position: relative;
+                border-bottom: var(--grayColor) solid 0.1px;
+                border-top: var(--grayColor) solid 0.1px;
             }
             .title-intro::before {
                 display: block;
@@ -157,19 +159,75 @@
                 color: var(--backGroundColor);
             }
             .sp-box {
-                margin-top: calc(3vw - 0.5vh);
-                margin-left: calc(3vw - 0.5vh);
+                margin-top: calc(2vh + 2vw);
+                display: flex; 
+                flex-direction: row;
+                flex-wrap: wrap; 
             }
             .sp-item {
                 cursor: pointer;
                 background-color: var(--grayColor);
                 border-radius: 0.85em;
+                border: rgba(255, 255, 255, 0.1) solid;
                 width: var(--withCard);
                 height: var(--heightCard);
+                position: relative;
+                margin: auto;
+                margin-top: calc(6vh - 3vw);
+                overflow: hidden;
+
+                -webkit-transition: 1s ease;
+                -moz-transition:    1s ease;
+                -ms-transition:     1s ease;
+                -o-transition:      1s ease;
+                transition:         1s ease;
             }
             .sp-item:hover {
-                width: var(--withCard);
-                height: var(--heightCard);
+                transform: scale(1.12);
+            }
+            .color-angle {
+                height: inherit;
+                width: inherit;
+                border-radius: 0.80em;
+                -webkit-clip-path: polygon(100% 0, 80% 0, 100% 20%);
+                clip-path: polygon(100% 0, calc(var(--withCard) /1.2) 0, 100% calc(var(--withCard) /6));
+
+                -webkit-transition: clip-path 1s;
+                -moz-transition:    clip-path 1s;
+                -ms-transition:     clip-path 1s;
+                -o-transition:      clip-path 1s;
+                transition:         clip-path 1s;
+            }
+            .sp-item:hover .color-angle {
+                clip-path: polygon(100% 0, 0 0, 100% 100%);
+            }
+           .color-angle.js, .sp-item.js:hover {
+                background: #ceb01e;
+            }
+            .color-angle.php, .sp-item.php:hover {
+                background: #787cb4;
+            }
+            .color-angle.java, .sp-item.java:hover {
+                background: #ce1d20;
+            }
+            .color-angle.py, .sp-item.py:hover {
+                background: #3773a5;
+            }
+            .color-angle.csp, .sp-item.csp:hover {
+                background: #9b4f97;
+            }
+            .color-angle.batch, .sp-item.batch:hover {
+                background: #449620;
+            }
+            .sp-name {
+                font-family: "Moderustic", sans-serif;
+                font-weight: bold;
+                position: absolute;
+                color: var(--backGroundColor);
+                font-size: calc(0.8vw + 1.8vh);
+                line-height: 1.2;
+                top: 20%;
+                left: 15%;
             }
     </style>
     </head>
@@ -196,10 +254,31 @@
             <div class="under-img"></div>
             <img class="img-me" src="img/me.png">
         </div>
-
+    
         <div class="sp-box">
-            <div class="sp-item">
-                
+            <div class="sp-item js">
+                <div class="color-angle js"></div>
+                <span class="sp-name">JS<br>HTML<br>CSS</span>
+            </div>
+            <div class="sp-item php">
+                <div class="color-angle php"></div>
+                <span class="sp-name">PHP</span>
+            </div>
+            <div class="sp-item java">
+                <div class="color-angle java"></div>
+                <span class="sp-name">Java</span>
+            </div>
+            <div class="sp-item csp">
+                <div class="color-angle csp"></div>
+                <span class="sp-name">C#<br>C++</span>
+            </div>
+            <div class="sp-item py">
+                <div class="color-angle py"></div>
+                <span class="sp-name">Python</span>
+            </div>
+            <div class="sp-item batch">
+                <div class="color-angle batch"></div>
+                <span class="sp-name">Batch</span>
             </div>
         </div>
 
