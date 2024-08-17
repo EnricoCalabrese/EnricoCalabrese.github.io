@@ -20,6 +20,7 @@
                 --grayColor: #363636;
                 --withCard: calc(21vh - 1vw);
                 --heightCard: calc(5.8vw + 10vh);
+                --letterSpacing: 0.1vw;
 
                 --titleEn: "< WHO I AM >";
                 --dialogTitleEn: "Take in contacts";
@@ -41,32 +42,26 @@
                 content: "Enrico Calabrese";
                 font-family: var(--fontStyle);
                 font-size: calc(0.3vw + 1.2vh);
-                letter-spacing: 2px;
+                letter-spacing: var(--letterSpacing);
             }
             .top-btn {
                 margin-right: calc(1vw + 1vh);
                 margin-left: auto;
             }
             #linkedin, #gmail {
-                margin-right: 1vw;
-                font-size: var(--sizeTopElements);              
-                color: var(--grayColor);
+                margin-right: calc(1.5vw + 0.8vh);              
                 cursor: pointer;
-                
-                -webkit-transition: color 1s;
-                -moz-transition:    color 1s;
-                -ms-transition:     color 1s;
-                -o-transition:      color 1s;
-                transition:         color 1s;
-            }
-            #gmail {
-                font-size: calc(var(--sizeTopElements) *1.04);
+                font-family: var(--fontStyle);
+                font-size: calc(0.3vw + 1.2vh);
+                letter-spacing: var(--letterSpacing);
             }
             #linkedin:hover {
                 color: var(--linkedinColor);
+                font-weight: bold;
             }
             #gmail:hover {
                 color: var(--gmailColor);
+                font-weight: bold;
             }
             .color-tab {
                 margin: -8;
@@ -214,7 +209,7 @@
             .color-angle.py, .sp-item.py:hover {
                 background: #3773a5;
             }
-            .color-angle.csp, .sp-item.csp:hover {
+            .color-angle.cspp, .sp-item.cspp:hover {
                 background: #9b4f97;
             }
             .color-angle.batch, .sp-item.batch:hover {
@@ -237,8 +232,8 @@
         <div class="top-tab">
             <span class="title-name"></span>
             <div class="top-btn">
-                <i class="fa fa-linkedin-square" id="linkedin" onclick="window.open('https:\/\/www.linkedin.com/in/luca-volini-401658106/?locale=en_US')"></i>
-                <i class="fa fa-envelope" id="gmail" onclick="openDialogGmail()"></i>
+                <i id="linkedin" onclick="window.open('https:\/\/www.linkedin.com/in/luca-volini-401658106/?locale=en_US')">Linkedin</i>
+                <i id="gmail" onclick="openDialogGmail()">Email</i> 
             </div>
         </div>
 
@@ -261,27 +256,27 @@ I love IT and i enjoy to apply it on as many fields as possible: mechanics/robot
         </div>
     
         <div class="sp-box">
-            <div class="sp-item js" onclick="location.replace('page2.html')">
+            <div class="sp-item js" onclick="location.replace('js.html')">
                 <div class="color-angle js"></div>
                 <span class="sp-name">JS<br>HTML<br>CSS</span>
             </div>
-            <div class="sp-item php">
+            <div class="sp-item php" onclick="location.replace('php.html')">
                 <div class="color-angle php"></div>
                 <span class="sp-name">PHP</span>
             </div>
-            <div class="sp-item java">
+            <div class="sp-item java" onclick="location.replace('java.html')">
                 <div class="color-angle java"></div>
                 <span class="sp-name">Java</span>
             </div>
-            <div class="sp-item csp">
-                <div class="color-angle csp"></div>
+            <div class="sp-item cspp" onclick="location.replace('cspp.html')">
+                <div class="color-angle cspp"></div>
                 <span class="sp-name">C#<br>C++</span>
             </div>
-            <div class="sp-item py">
+            <div class="sp-item py" onclick="location.replace('py.html')">
                 <div class="color-angle py"></div>
                 <span class="sp-name">Python</span>
             </div>
-            <div class="sp-item batch">
+            <div class="sp-item batch" onclick="location.replace('batch.html')">
                 <div class="color-angle batch"></div>
                 <span class="sp-name">Batch</span>
             </div>
@@ -296,6 +291,7 @@ I love IT and i enjoy to apply it on as many fields as possible: mechanics/robot
             var age = new Date(new Date() - new Date(yb)).getFullYear() - 1970;
             intro.textContent = intro.textContent.replace("XXX", yexp).replace("YYY", age);
 
+            //dialog
             let dialogmail = document.querySelector("dialog");
             let dialogmail_btn = document.querySelector("dialog button");
             dialogmail_btn.addEventListener("click", () => {
@@ -309,8 +305,6 @@ I love IT and i enjoy to apply it on as many fields as possible: mechanics/robot
                     copied.classList.toggle('fade');
                 }, 900);
             });
-
-            //functions
             function openDialogGmail(){
                 dialogmail.showModal();
             }
