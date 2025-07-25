@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EC - Developer portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0f172a;
+      --color-bg-alt: #1e293b;
+      --color-primary: #f87171;
+      --color-white: #dfdbdb;
+      --color-white-transparent: rgba(255, 255, 255, 0.158);
+      --color-white-semi: rgba(255, 255, 255, 0.589);
+
+      --font-family: 'Inter', sans-serif;
+
+      --space-xs: 10px;
+      --space-sm: 15px;
+      --space-md: 20px;
+      --space-lg: 60px;
+      --space-xl: 80px;
+
+      --font-lg: 1.8rem;
+      --font-xl: 3rem;
+      --font-xxl: 35px;
+
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 20px;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background-color: var(--color-bg);
+      color: var(--color-white);
+    }
+
+    header, section {
+      padding: var(--space-lg) var(--space-md);
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-md);
+    }
+
+    nav a {
+      color: var(--color-white);
+      margin: 0 var(--space-sm);
+      text-decoration: none;
+    }
+
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-text {
+      max-width: 500px;
+    }
+
+    .header-text h1 {
+      font-size: var(--font-xl);
+      margin: 0;
+    }
+
+    .buttons {
+      margin-top: var(--space-md);
+    }
+
+    .buttons button {
+      margin-right: var(--space-sm);
+      padding: var(--space-xs) var(--space-md);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+
+    .btn-primary:hover {
+      color: var(--color-bg);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border: 2px solid var(--color-primary) !important;
+      color: var(--color-white);
+    }
+
+    .btn-secondary:hover {
+      color: var(--color-primary);
+    }
+
+    .page {
+      display: none;
+      position: fixed; 
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%;
+      overflow: auto; 
+      background-color: rgba(15, 23, 42, 0.9);
+      font-family: var(--font-family);
+    }
+
+    .page-content {
+      background-color: var(--color-bg-alt);
+      margin: 10% auto;
+      padding: var(--space-md);
+      border-radius: var(--radius-lg);
+      max-width: 400px;
+      color: var(--color-white);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+      text-align: center;
+      position: relative;
+    }
+
+    .close-btn {
+      color: var(--color-white);
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: var(--color-primary);
+    }
+
+    .email-wrapper {
+      margin-top: var(--space-md);
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xs);
+    }
+
+    .email-wrapper input {
+      flex: 1;
+      padding: var(--space-xs);
+      border-radius: var(--radius-sm);
+      border: none;
+      background-color: var(--color-bg);
+      color: var(--color-white);
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .email-wrapper button {
+      background-color: var(--color-primary);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: var(--color-bg);
+      cursor: pointer;
+      font-weight: bold;
+      padding: var(--space-xs) var(--space-md);
+      transition: background-color 0.3s ease;
+    }
+
+    .email-wrapper button:hover {
+      background-color: #ef4444;
+    }
+
+    .profile-img {
+      width: 300px;
+      border-radius: var(--radius-lg);
+    }
+
+    .skills-wrapper {
+      position: relative;
+      padding: var(--space-lg) 0;
+      background-color: var(--color-bg);
+      margin-top: -3.5rem;
+    }
+
+    .skills-wrapper::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      height: 60px;
+      background-color: var(--color-bg-alt);
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .skills {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .skills a {
+      text-decoration: none;
+      color: var(--color-white-transparent);
+      background-color: var(--color-bg-alt);
+      padding: var(--space-xs) 5%;
+      border-radius: var(--radius-md);
+      display: inline-block;
+      margin: var(--space-xs);
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .skills a:hover, .shortcuts a:hover {
+      color: var(--color-primary);
+    }
+
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 var(--space-md);
+      background-color: var(--color-bg);
+      margin-top: -1%;
+    }
+
+    .about-text {
+      flex: 0 0 50%;
+      max-width: 600px;
+    }
+
+    .stat {
+      flex: 0 0 50%;
+    }
+
+    .stat-number {
+      font-size: var(--font-lg);
+      font-weight: 900;
+      color: var(--color-white);
+      display: flex;
+      align-items: baseline;
+    }
+
+    .stat-number .plus {
+      color: var(--color-primary);
+      font-size: var(--font-xxl);
+      font-weight: 700;
+      line-height: 1;
+      margin-top: -2%;
+    }
+
+    .stat-text {
+      color: var(--color-white-semi);
+      margin-top: 2px;
+    }
+
+    .projects-section {
+      padding: var(--space-xl) var(--space-md);
+      text-align: center;
+      position: relative;
+    }
+
+    .projects-title {
+      font-size: var(--font-xl);
+      color: var(--color-white);
+      margin-bottom: var(--space-md);
+      font-weight: 900;
+    }
+
+    .vertical-divider {
+      width: 4px;
+      height: 100px;
+      background-color: var(--color-primary);
+      margin: 0 auto var(--space-xl);
+      border-radius: 2px;
+    }
+
+    .project-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: var(--space-xl) auto;
+      max-width: 900px;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
+    .project-img {
+      width: 300px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    }
+
+    .project-description {
+      max-width: 400px;
+      text-align: left;
+    }
+
+    .project-description h3 {
+      font-size: var(--font-lg);
+      color: var(--color-white);
+      margin: 0 0 var(--space-xs);
+    }
+
+    .project-description p {
+      color: var(--color-white-semi);
+      line-height: 1.6;
+    }
+
+    .simple-text {
+      line-height: 1.3;
+    }
+
+    footer {
+      text-align: center;
+      padding: var(--space-md);
+      background-color: var(--color-bg-alt);
+    }
+
+    #image-container {
+        display: block;
+        position: fixed;
+        z-index: 1500;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(15, 23, 42, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: zoom-out;
+      }
+
+    #image-container .page-content {
+      background: none;
+      box-shadow: none;
+      max-width: 90%;
+      max-height: 90%;
+      padding: 0;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #image-container img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: var(--radius-lg);
+      pointer-events: none;
+    }
+    
+    #ref {
+      display: block;
+      position: relative;
+      top: -80px;
+      visibility: hidden;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div><strong>Enrico Calabrese</strong></div>
+    <div class="shortcuts">
+      <a href="#about" class="scroll-link">About</a>
+      <a href="https://www.linkedin.com/in/enrico-calabrese-4961b4376/">Linkedin</a>
+    </div>
+  </nav>
+
+  <header class="header">
+    <div class="header-text">
+      <p>Hello,</p>
+      <h1>I'm Enrico<br><strong>Software Developer</strong></h1>
+      <div class="buttons">
+        <button class="btn-primary" id="contacts">Contacts</button>
+        <button class="btn-secondary" id="myresume">My resume</button>
+      </div>
+    </div>
+    <img src="source/profile.jpg" alt="photo" class="profile-img" onerror="this.style.display='none'">
+  </header>
+
+  <div id="contact-page" class="page">
+    <div class="page-content">
+      <span class="close-btn">&times;</span>
+      <h2>Contact Me</h2>
+      <p>Email:</p>
+      <div class="email-wrapper">
+        <input type="text" id="email" readonly value="enricocalabrese21@gmail.com" />
+        <button id="copy-email">Copy</button>
+      </div>
+      <p id="copy-message" style="color: var(--color-primary); display: none;">Copied to clipboard!</p>
+    </div>
+  </div>
+
+  <div class="skills-wrapper">
+    <div class="skills">
+      <a href="#app" class="scroll-link">APPS</a>
+      <a href="#web" class="scroll-link">WEB APPLICATIONS</a>
+      <a href="#bots" class="scroll-link">BOTS</a>
+      <a href="#robots" class="scroll-link">ROBOTICS</a>
+      <a href="#mods" class="scroll-link">MODS</a>
+    </div>
+  </div>
+  <span id="ref"></span>
+
+  <section id="about" class="about">
+    <div class="about-text">
+      <h2>About me</h2>
+      <p class="simple-text">
+        I am a guy who's always curious and happy to learn new things.<br>
+        I love IT and I enjoy to apply it on as many fields as possible: mechanics/robotics, biology, videogames and especially to automate processes that otherwise would be a waste of time.<br>
+        The three key words for what makes a good program are: safety, efficiency and accessibility.
+      </p>
+      <div class="stat">
+        <div class="stat-number"><span class="plus">+</span></div>
+        <p class="stat-text">Years of Work Experience</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <h2 class="projects-title">PROJECTS</h2>
+    <div class="vertical-divider"></div>
+
+    <div class="project-block">
+      <img src="source/project1.png" alt="Project 1" class="project-img" onerror="this.style.display='none'">
+      <div class="project-description" id="app">
+        <h3>APP MOBILE</h3>
+        <p>In my daily life, I train regularly, and I've always had hard time with the apps available on the PlayStore. 
+          So, I decided to use my knowledge of Dart along with Flutter to develop my own Android app, allowing me to train more easily and comfortably.
+            Dart is a programming language developed by Google for Android apps, and it's a valid alternative to C#, which can also be used in Android Studio 
+            and with which I've had the opportunity to work, for home-made projects, a few times.</p>
+      </div>
+    </div>
+    <div class="vertical-divider"></div>
+
+    <div class="project-block">
+      <div class="project-description" id="web">
+        <h3>WEB APPLICATIONS</h3>
+        <p>The image on the side shows an example of an application I built using HTML, JavaScript, and CSS, all of which I learned on my own. 
+          It's a Chrome extension that I developed to make and receive API calls in order to compile a specific module directly from the browser on a website. 
+          It retrieves information from the current web page and uses it to populate the necessary fields for the module.</p>
+      </div>
+      <img src="source/project2.png" alt="Project 2" class="project-img" onerror="this.style.display='none'">
+    </div>
+    <div class="vertical-divider"></div>
+    
+    <div class="project-block">
+      <img src="source/project3.png" alt="Project 3" class="project-img" onerror="this.style.display='none'">
+      <div class="project-description" id="bots">
+        <h3>PYTHON-BASED BOTS</h3>
+        <p>Python is one of the best and most versatile programming languages available today, and it's excellent for creating bots. 
+          The image on the side shows a Discord bot I created. Discord is a free communication app used to chat and hang out with your favorite creators, communities, and friends.
+            The bot I made to allows users, through simple commands in the chat, to play the game "Blood on the Clocktower" with others in a voice channel. 
+            This game is a more complex version of the famous game Werewolf (Italian: Lupus in Fabula). 
+            Using Python, I also created a Telegram bot in order to remotely manage a machine that I set up as a hosting server.
+        </p>
+      </div>
+    </div>
+    <div class="vertical-divider"></div>
+    
+    <div class="project-block">
+      <div class="project-description" id="robots">
+        <h3>ROBOTICS & AUTOMATION</h3>
+        <p>Since high school, I've always had an interest in automation, and I find it super fun to animate robots and apply computer science to something that can moves.
+          A few years ago, I took on the challenge of building a drone from scratch and programming it in C++. I developed calculation functions which, thanks to the input from various sensors, 
+          were able to determine the necessary speed for each individual motor to stabilize the drone through the appropriate output signals.
+        </p>
+      </div>
+      <img src="source/project4.png" alt="Project 4" class="project-img" onerror="this.style.display='none'">
+    </div>
+    <div class="vertical-divider"></div>
+    
+    <div class="project-block">
+      <img src="source/project5.png" alt="Project 5" class="project-img" onerror="this.style.display='none'"> 
+      <div class="project-description" id="mods">
+        <h3>VIDEOGAMES MODS</h3>
+        <p>Programming a video game mod is a great way to develop both technical and creative skills. It allows you to improve your coding abilities, and understand the architecture of complex systems. 
+            Modding combines passion and practice, which is why I started programming, first with Java and later with .mcfunction, to create mods and datapacks for the game Minecraft.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div id="image-container" class="page">
+    <div class="page-content">
+      <img id="zoomed-img" src="" alt="zoomed" />
+    </div>
+  </div>
+
+  <footer>
+  </footer>
+
+  <script>
+    // manage image zoom
+    const zoomed = document.getElementById('image-container');
+    document.querySelectorAll('.project-img').forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('zoomed-img').src = img.src;
+        zoomed.style.display = 'flex';
+      });
+    });
+
+    zoomed.addEventListener('click', (e) => { // on click out of the page
+      if (e.target === zoomed) {
+        zoomed.style.display = 'none';
+      }
+    });
+
+    window.onload = () => {
+      zoomed.style.display = 'none';
+    };
+
+    // manage new window contacts
+    const page = document.getElementById('contact-page');
+    const emailInput = document.getElementById('email');
+    const copyMessage = document.getElementById('copy-message');
+
+    document.getElementById('contacts').addEventListener('click', () => {
+      page.style.display = 'block';
+      copyMessage.style.display = 'none';
+    });
+
+    page.querySelector('.close-btn').addEventListener('click', () => {
+      page.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => { // on click out of the page
+      if (e.target === page) {
+        page.style.display = 'none';
+      }
+    });
+
+    document.getElementById('copy-email').addEventListener('click', () => {
+      emailInput.select();
+      emailInput.setSelectionRange(0, 99999);
+      try {
+        // use document.execCommand for broader browser support in iFrames
+        const successful = document.execCommand('copy');
+        if (successful) {
+          copyMessage.style.display = 'block';
+          setTimeout(() => copyMessage.style.display = 'none', 2000);
+        }
+      } catch (err) {
+        console.error('Failed to copy email: ', err);
+      }
+    });
+
+    // auto scroll the page to the top when open
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+
+    // scroll page on center when click a link, normal href set the page on top
+    document.querySelectorAll('.scroll-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElem = document.getElementById(targetId);
+        if (targetElem) {
+          const elemRect = targetElem.getBoundingClientRect();
+          const maxElemTop = window.pageYOffset + elemRect.top;
+          const middle = maxElemTop - (window.innerHeight / 2) + (elemRect.height / 2);
+
+          window.scrollTo({
+            top: middle,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // setup experience years based on current year
+    const statNum = document.querySelector('.stat-number');
+    if (statNum) {
+      const startDate = new Date('2021-09-27');
+      const now = new Date();
+      const diffYears = (now - startDate) / (1000 * 60 * 60 * 24 * 365.25);
+      const roundedYears = Math.floor(diffYears);
+      statNum.innerHTML = `${roundedYears}<span class="plus">+</span>`;
+    }
+
+    // link to resume when click "my resume" button
+    document.getElementById('myresume').addEventListener('click', function () {
+      const link = document.createElement('a');
+      link.href = 'source/resume.pdf';
+      link.download = 'Enrico-Calabrese-Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  </script>
+</body>
+</html>
